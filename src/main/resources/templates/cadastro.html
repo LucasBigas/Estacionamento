@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" th:href="@{/css/cadastro.css}">
+</head>
+<body>
+    <nav class="title">
+        <h1>Estaciona Parking</h1>
+    </nav>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#">Login</a></li>
+            <li><a th:href="@{/usuarios/novo}">Cadastro</a></li>
+            <li><a href="#">Veiculo</a></li>
+            <li>Lista de Veiculos</li>
+            <a th:href="@{/modelos}"><li>Modelo</li></a>
+            <li><a th:href="@{/usuarios}">Lista de Usuarios</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h1>Cadastro</h1>
+        
+        <form th:action="@{/usuarios/salvar}" th:object="${usuario}" method="post">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" th:field="*{nome}" placeholder="Nome" required>
+            
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" name="cpf" th:field="*{cpf}" placeholder="CPF" required>
+            
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" th:field="*{senha}" placeholder="Senha" required>
+            
+            <label>Tipo de Acesso</label>
+            <br>
+            <div class="form-check">
+                <input type="radio" name="tipoAcesso" th:field="*{tipoAcesso}" value="GERENTE" id="gerente">
+                <label for="gerente">Gerente</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="tipoAcesso" th:field="*{tipoAcesso}" value="FUNCIONARIO" id="funcionario">
+                <label for="funcionario">Funcionario</label>
+            </div>
+            
+            <button type="submit">Confirmar Cadastro</button>
+        </form>
+    </main>
+</body>
+</html>
